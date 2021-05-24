@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "dynamic-form for react",
   "main": "index.min.js",
-  "module": "es/index.js",
+  "module": "es/index.esm.js",
+  "typings": "types/index.d.ts",
+  "build:types": "tsc -p tsconfig.types.json",
   "directories": {
     "example": "example",
     "test": "test"
@@ -11,7 +13,7 @@
   "scripts": {
     "dev": "rollup -c rollup.config.js -w",
     "build": "rollup -c rollup.config.js & npm run build:es",
-    "build:es": "rollup -c rollup.config.js -f 'es' -o 'dist/es/index.js'",
+    "build:es": "rollup -c rollup.config.js -f 'es' -o 'dist/es/index.esm.js'",
     "gc": "git-cz"
   },
   "keywords": [
