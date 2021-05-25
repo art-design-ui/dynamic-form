@@ -3,7 +3,8 @@
     "baseUrl": "./",
     "strict": true,
     "lib": ["dom", "dom.iterable", "esnext"],
-    "typeRoots": ["./src"],
+    // If typeRoots is specified, only packages under typeRoots will be included. For example:
+    "typeRoots": ["src/types"],
     "paths": {
     },
     "types": [],

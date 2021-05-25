@@ -3,7 +3,7 @@
   "collectCoverage": true,
   "cacheDirectory": ".cache",
   "roots": ["<rootDir>"],
-  "setupFilesAfterEnv": ["./tests/setupTests.js"],
+  "setupFilesAfterEnv": ["./test/setupTests.js"],
   "transform": {
     "^.+\\.(t|j)s?x?$": "babel-jest"
   },

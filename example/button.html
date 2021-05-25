@@ -18,14 +18,40 @@
 <body>
   <div id="app">
   </div>
-  <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/antd/4.15.6/antd.min.js"></script>
   <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
   <script src="../dist/index.min.js"></script>
   <script type="text/babel">
+  const {Col,Button,Form,Row} = antd
+  const FormItem = Form.Item
+  function App(){
     console.log(ReactFormMaker)
-    ReactDOM.render(<ReactFormMaker />,document.getElementById('app'))
+    const options = {
+      formItem: [
+        {
+          type: 'button',
+          props: {
+            className:"my-button",
+            type: "primary",
+            span:12
+          },
+          children:['按钮1']
+        },
+        {
+          type: 'button',
+          props: {
+            type: "primary",
+            span:6
+          },
+          children:['按钮2',<span>span文本</span>]
+        }
+      ]
+    }
+    return <div><ReactFormMaker options={options} /></div>
+  }
+  ReactDOM.render(<App/>, document.getElementById('app'))
   </script>
 </body>
 
