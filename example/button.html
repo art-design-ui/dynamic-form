@@ -25,16 +25,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
     integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.js"
-    integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/antd/4.16.0/antd-with-locales.js"
     integrity="sha512-LAyCMzJy/igkEnP7f4WYdNxKcD5PBAatHUOGhsC6xdP1XqntNCPU/Phk6dDXXHNe0gIgAGaWmkmSXQuQfMJ/lA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="../dist/index.min.js"></script>
   <script type="text/babel">
-    const fileList = [
+    const fileList=[
       // {
       //   uid: '1',
       //   name: 'image.png',
@@ -42,7 +39,7 @@
       //   url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
       // }
     ]
-    const treeData = [
+    const treeData=[
       {
         title: 'Node1',
         value: '0-0',
@@ -78,7 +75,7 @@
         ],
       },
     ];
-    const cascaderOptions = [
+    const cascaderOptions=[
       {
         value: 'zhejiang',
         label: 'Zhejiang',
@@ -111,24 +108,24 @@
           },
         ]
       }]
-    const checkboxGroupOptions = [
-      { label: 'Apple', value: <span>Apple</span> },
-      { label: 'Pear', value: 'Pear' },
-      { label: 'Orange', value: 'Orange' },
+    const checkboxGroupOptions=[
+      {label: 'Apple',value: <span>Apple</span>},
+      {label: 'Pear',value: 'Pear'},
+      {label: 'Orange',value: 'Orange'},
     ];
 
-    const radioGroupOptions = [
-      { label: 'Apple', value: 'Apple' },
-      { label: 'Pear', value: 'Pear' },
-      { label: 'Orange', value: 'Orange' },
+    const radioGroupOptions=[
+      {label: 'Apple',value: 'Apple'},
+      {label: 'Pear',value: 'Pear'},
+      {label: 'Orange',value: 'Orange'},
     ];
 
-    const selectOptions = [
-      { label: 'Apple', value: 'Apple' },
-      { label: 'Pear', value: 'Pear' },
-      { label: 'Orange', value: 'Orange' }
+    const selectOptions=[
+      {label: 'Apple',value: 'Apple'},
+      {label: 'Pear',value: 'Pear'},
+      {label: 'Orange',value: 'Orange'}
     ]
-    const marks = {
+    const marks={
       0: '0°C',
       26: '26°C',
       37: '37°C',
@@ -139,33 +136,46 @@
         label: <strong>100°C</strong>,
       },
     };
-    const mockData = [];
-    for (let i = 0; i < 20; i++) {
+    const mockData=[];
+    for(let i=0;i<20;i++) {
       mockData.push({
         key: i.toString(),
-        title: `content${i + 1}`,
-        description: `description of content${i + 1}`,
+        title: `content${i+1}`,
+        description: `description of content${i+1}`,
       });
     }
-    const { Upload, Transfer, TreeSelect, TimePicker, AutoComplete, Rate, DatePicker, Slider, Select, Switch, Col, Button, Form, Row, Input, Cascader, Checkbox, InputNumber, Radio } = antd
-    const FormItem = Form.Item
+    const {Upload,Transfer,TreeSelect,TimePicker,AutoComplete,Rate,DatePicker,Slider,Select,Switch,Col,Button,Form,Row,Input,Cascader,Checkbox,InputNumber,Radio}=antd
+    const FormItem=Form.Item
     function App() {
       console.log(ReactFormMaker)
-      const config = {
+      const [form]=Form.useForm();
+      const onGenderChange=(e) => {
+        console.log('获取平台的值',form.getFieldValue('platform'))
+      };
+      const config={
         form: {
           "labelCol": {
             "span": 6
           },
           "wrapperCol": {
             "span": 18
+          },
+          initialValues: {
+            name: 'vnues',
+            reason: '这就是原因',
+            amount: 3000,
+            platform: '',
+            // rate: 3.5,
           }
+          ,
+          form
         },
         "fields": [
           {
             formItem: {
-              "name": "description",
+              "name": "name",
               // label 标签的文本	ReactNode
-              "label": "其他信息",
+              "label": "姓名",
               "rules": [
                 {
                   "required": true,
@@ -176,16 +186,14 @@
             "field": {
               "type": "input",
               "props": {
-                "placeholder": "请输入发送人姓名",
-                // "size":"large"
+                "placeholder": "请输入用户姓名",
+                onChange: onGenderChange
               },
-              // children:[] // 定义子节点 可以在这里写JSX
             },
           },
           {
             formItem: {
-              "name": "textarea",
-              "label": "Textarea组件",
+              "label": "原因",
               "rules": [
                 {
                   "required": true,
@@ -195,21 +203,23 @@
             },
             "field": {
               "type": "textarea",
-               title: {
-                 text:"这是文本标题",// 支持JSX语法
-                 props:{
-                   className:'title'
-                 }
-               },
+              formItem: {
+                "name": "reason",
+              },
+              title: {
+                text: "这是文本标题",// 支持JSX语法
+                props: {
+                  className: 'title',
+                }
+              },
               "props": {
-                fileList
               },
             },
           },
           {
             formItem: {
-              "name": "inputNumber",
-              "label": "inputNumber组件",
+              "name": "amount",
+              "label": "金额",
               "rules": [
                 {
                   "required": true,
@@ -221,14 +231,13 @@
               "type": "inputNumber",
               "props": {
                 "placeholder": "请输入金额",
-                // "size":"large"
               },
             },
           },
           {
             formItem: {
-              "name": "cascader",
-              "label": "cascader组件",
+              "name": "platform",
+              label: "平台",
               "rules": [
                 {
                   "required": true,
@@ -239,9 +248,8 @@
             "field": {
               "type": "cascader",
               "props": {
-                options: cascaderOptions
+                options: cascaderOptions,
               },
-              // children:[] // 定义子节点 可以在这里写JSX
             },
           },
           {
@@ -542,54 +550,38 @@
               "props": {
                 fileList
               },
-              children: [<Button>Click to Upload</Button>]
+              children: <Button>Click to Upload</Button>
             },
-          },
-          {
-            "field": {
-              "type": "button",
-              "props": {
-              },
-              children: ['按钮'] // 定义子节点 可以在这里写JSX
-            },
-          },
+          }
         ],
-        "submit": {
-          "url": "/api/manage/add.json",
-          "method": "post"
+        // 提交按钮 必需
+        submit: {
+          text: '提交',
+          form,
+          props: {
+            type: 'primary'
+          },
+          success() {
+            alert(JSON.stringify({}))
+          },
+          fail(formData) {
+            alert('验证失败')
+          }
         },
-        "remoteValues": {
-          "url": "/api/manage/detail.json",
-          "method": "post",
-          "params": {
-            "id": 19
+        reset: {
+          text: '重置',
+          form,
+          props: {
+            type: 'primary'
+          },
+          callBack() {
+            // 关闭弹框等操作
           }
         }
       }
-      // const options = {
-      //   formItem: [
-      //     {
-      //       type: 'button',
-      //       props: {
-      //         className: "my-button",
-      //         type: "primary",
-      //         span: 12
-      //       },
-      //       children: ['按钮1']
-      //     },
-      //     {
-      //       type: 'button',
-      //       props: {
-      //         type: "primary",
-      //         span: 6
-      //       },
-      //       children: ['按钮2', <span>span文本</span>]
-      //     }
-      //   ]
-      // }
       return <div><ReactFormMaker {...config} /></div>
     }
-    ReactDOM.render(<App />, document.getElementById('app'))
+    ReactDOM.render(<App />,document.getElementById('app'))
   </script>
 </body>
 
