@@ -1,24 +1,8 @@
 # dynamic-form
 
-## Project setup
-```
-npm install
-```
+> 100%还原form组件
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-
+- 支持JSON配置
+- 支持双向绑定
+- 支持子节点配置
+- 增加重置和提交功能
