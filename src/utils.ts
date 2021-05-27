@@ -107,7 +107,7 @@ function generateSubmitComponent(h: any, field: any) {
   )
 }
 
-// 增加title选择项 title不是lable啊
+// 增加title选择项 title不是lable
 function generateTextAreaComponent(h: any, field: any) {
   // return h('div', null,h(div, field.title.props, field.title.text), h(Input.TextArea, field.props));
   if (field.title && Object.keys(field.title).length) {
@@ -157,7 +157,7 @@ function generateRangePickerComponent(h: any, field: any) {
   return h(DatePicker.RangePicker, field.props)
 }
 function generateTimePickerComponent(h: any, field: any) {
-  //   <TimePicker onChange={onChange} defaultOpenValue={moment('00:00:00', 'HH:mm:ss')} />,
+  // <TimePicker onChange={onChange} defaultOpenValue={moment('00:00:00', 'HH:mm:ss')} />,
   return h(TimePicker, field.props)
 }
 
