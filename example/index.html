@@ -155,10 +155,10 @@
       const config={
         form: {
           "labelCol": {
-            "span": 6
+            "span": 8
           },
           "wrapperCol": {
-            "span": 18
+            "span": 12
           },
           initialValues: {
             name: 'vnues',
@@ -381,8 +381,7 @@
               "type": "select",
               "props": {
                 options: selectOptions,
-                placeholder: '请选择',
-                defaultValue: "Pear"
+                placeholder: '请选择'
               }
             },
           },
@@ -572,7 +571,8 @@
           text: '重置',
           form,
           props: {
-            type: 'primary'
+            type: 'primary',
+            style:{marginLeft:20}
           },
           callBack() {
             // 关闭弹框等操作

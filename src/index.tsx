@@ -1,17 +1,40 @@
-import React, { createElement, useState } from 'react'
-
-import antdComponentCollects, { AntdComponentCollects } from './utils.ts'
-
+import React, { createElement, ReactNode } from 'react'
+import antdComponentCollects, { AntdComponentCollects } from './utils'
+import { FormProps, FormItemProps, FormInstance, ButtonProps, Form } from 'antd'
 export interface ReactFormMakerOptions {
-  fields: FormItemOptions[]
+  form: FormProps
+  fields: FormField[]
+  submit: {
+    text: ReactNode
+    form: FormInstance
+    props: ButtonProps
+    success: () => void
+    fail: () => void
+  }
+  reset: {
+    text: ReactNode
+    form: FormInstance
+    props: ButtonProps
+    callBack: () => void
+  }
 }
-export interface FormItemOptions {
+
+export interface FormField {
+  formItem: FormItemProps
+  field: FormFiedOptions
+}
+export interface FormFiedOptions {
   type: keyof AntdComponentCollects
   props: any
-  children: any[]
+  text?: ReactNode
+  title?: {
+    text: ReactNode
+    props?: any
+  }
+  children?: ReactNode
 }
 
-function processSubmitOrReset(components: any, h: any, props: any) {
+function processSubmitOrReset(components: any, h: typeof createElement, props: ReactFormMakerOptions) {
   const subComponent = []
   if (props.submit) {
     subComponent.push(antdComponentCollects['submit'](h, props.submit))
@@ -19,27 +42,31 @@ function processSubmitOrReset(components: any, h: any, props: any) {
   if (props.reset) {
     subComponent.push(antdComponentCollects['reset'](h, props.reset))
   }
-  let component = antdComponentCollects.formItem(h, {}, subComponent)
+  // 对底部按钮做定位调整
+  const wrapperCol = { ...props.form.wrapperCol }
+  if (props.form.wrapperCol) {
+    wrapperCol['offset'] = wrapperCol['offset']
+      ? wrapperCol['offset'] + props.form.labelCol.span
+      : props.form.labelCol.span
+  }
+  let component = antdComponentCollects.formItem(h, { wrapperCol, key: 'bottom-actions' }, subComponent)
   components.push(component)
 }
 
 const ReactFormMaker = (props: ReactFormMakerOptions) => {
-  const [user, setUser] = useState({})
   const render = (h: typeof createElement) => {
     if (!props.fields) {
       return h('div')
     }
     console.log(props)
-    const components = props.fields.map((item: FormItemOptions) => {
+    const components = props.fields.map((item: FormField) => {
       let func = antdComponentCollects[item.field.type]
-      let subComponent = func ? func(h, item.field) : null
-      console.log('subComponent', subComponent)
+      let subComponent = func ? func(h, { ...item.field }) : null
       // 包一层formItem标签
-      let component = antdComponentCollects.formItem(h, item.formItem, subComponent)
+      let component = antdComponentCollects.formItem(h, { ...item.formItem, key: item.formItem.label }, subComponent)
       return component
     })
     processSubmitOrReset(components, h, props)
-    console.log('props.form', props.form)
     return h(Form, props.form, components)
   }
   return render(createElement)

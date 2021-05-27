@@ -1,5 +1,24 @@
-import React from 'react'
-
+import React, { createElement } from 'react'
+import {
+  Upload,
+  Transfer,
+  TreeSelect,
+  TimePicker,
+  AutoComplete,
+  Rate,
+  DatePicker,
+  Slider,
+  Select,
+  Switch,
+  Button,
+  Input,
+  Cascader,
+  Checkbox,
+  InputNumber,
+  Radio,
+  Form
+} from 'antd'
+import { FormFiedOptions, FormField, FormH } from 'src'
 export interface AntdComponentCollects {
   button: (h: any, obj: any) => React.ReactElement
   input: (h: any, obj: any) => React.ReactElement
@@ -33,11 +52,12 @@ const antdComponentCollects: AntdComponentCollects = {
   submit: generateSubmitComponent
 }
 
-function generateResetComponent(h: any, field: any) {
+function generateResetComponent(h: FormH, field: any) {
   return h(
     Button,
     {
       ...field.props,
+      key: 'reset',
       onClick: () => {
         field.form.resetFields()
         field.form.callBack()
@@ -52,6 +72,7 @@ function generateSubmitComponent(h: any, field: any) {
     Button,
     {
       ...field.props,
+      key: 'submit',
       onClick: () => {
         field
           .validateFields()
@@ -72,14 +93,14 @@ function generateTextAreaComponent(h: any, field: any) {
   // return h('div', null,h(div, field.title.props, field.title.text), h(Input.TextArea, field.props));
   if (field.title && Object.keys(field.title).length) {
     return [
-      h('div', field.title.props, field.title.text),
-      generateFormItemComponent(h, field.formItem, h(Input.TextArea, field.props))
+      h('div', { ...field.title.props, key: field.title.text }, field.title.text),
+      generateFormItemComponent(h, { ...field.formItem, key: field.formItem.name }, h(Input.TextArea, field.props))
     ]
   }
   return h(Input.TextArea, field.props)
 }
 
-function generatetransferComponent(h: any, field: any) {
+function generatetransferComponent(h: any, field: FormFiedOptions) {
   return h(Transfer, field.props)
 }
 
@@ -152,7 +173,7 @@ function generateCascaderComponent(h: any, field: any) {
 }
 
 function generateFormItemComponent(h: any, formItem: any, component?: any) {
-  return h(FormItem, formItem, component)
+  return h(Form.Item, formItem, component)
 }
 
 export default antdComponentCollects
