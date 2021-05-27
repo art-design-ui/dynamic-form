@@ -1,0 +1,27 @@
+{
+  "menus": {
+    "zh": {
+      "*": [
+        {
+          "path": "/",
+          "title": "ReactFormMaker",
+          "meta": {}
+        }
+      ]
+    }
+  },
+  "locales": [
+    {
+      "name": "zh",
+      "label": "中文"
+    }
+  ],
+  "navs": {},
+  "title": "noov",
+  "mode": "site",
+  "repository": {
+    "url": "",
+    "branch": "master"
+  },
+  "theme": {}
+}

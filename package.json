@@ -1,5 +1,5 @@
 {
-  "name": "dynamic-form",
+  "name": "react-form-maker",
   "version": "1.0.0",
   "description": "dynamic-form for react",
   "main": "index.min.js",
