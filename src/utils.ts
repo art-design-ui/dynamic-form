@@ -16,33 +16,42 @@ import {
   Checkbox,
   InputNumber,
   Radio,
-  Form
+  Form,
+  FormItemProps
 } from 'antd'
-import { FormFiedOptions, FormField } from 'src'
+import { FormFiedOptions, FormRest, FormSubmit } from 'src'
 export interface AntdComponentCollects {
-  button: (h: any, obj: any) => React.ReactElement
-  input: (h: any, obj: any) => React.ReactElement
-  formItem: (h: any, obj: any, component?: null | React.ReactElement | React.ReactElement[]) => React.ReactElement
-  cascader: (h: any, obj: any) => React.ReactElement
-  textarea: (h: any, obj: any) => React.ReactElement
-  radio: (h: any, obj: any) => React.ReactElement
-  radioGroup: (h: any, obj: any) => React.ReactElement
-  checkbox: (h: any, obj: any) => React.ReactElement
-  checkboxGroup: (h: any, obj: any) => React.ReactElement
-  switch: (h: any, obj: any) => React.ReactElement
-  select: (h: any, obj: any) => React.ReactElement
-  slider: (h: any, obj: any) => React.ReactElement
-  datePicker: (h: any, obj: any) => React.ReactElement
-  rangePicker: (h: any, obj: any) => React.ReactElement
-  timePicker: (h: any, obj: any) => React.ReactElement
-  inputNumber: (h: any, obj: any) => React.ReactElement
-  autoComplete: (h: any, obj: any) => React.ReactElement
-  rate: (h: any, obj: any) => React.ReactElement
-  upload: (h: any, obj: any) => React.ReactElement
-  treeSelect: (h: any, obj: any) => React.ReactElement
-  transfer: (h: any, obj: any) => React.ReactElement
-  reset: (h: any, obj: any) => React.ReactElement
-  submit: (h: any, obj: any) => React.ReactElement
+  button: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  input: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  formItem: (
+    h: typeof createElement,
+    field: FormItemComponentProps,
+    component?: null | React.ReactElement | React.ReactElement[]
+  ) => React.ReactElement
+  cascader: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  textarea: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement | React.ReactElement[]
+  radio: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  radioGroup: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  checkbox: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  checkboxGroup: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  switch: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  select: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  slider: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  datePicker: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  rangePicker: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  timePicker: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  inputNumber: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  autoComplete: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  rate: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  upload: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  treeSelect: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  transfer: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  reset: (h: typeof createElement, field: FormRest) => React.ReactElement
+  submit: (h: typeof createElement, field: FormSubmit) => React.ReactElement
+}
+
+export interface FormItemComponentProps extends FormItemProps {
+  key?: string
 }
 
 const antdComponentCollects: AntdComponentCollects = {
@@ -71,7 +80,7 @@ const antdComponentCollects: AntdComponentCollects = {
   submit: generateSubmitComponent
 }
 
-function generateResetComponent(h: any, field: any) {
+function generateResetComponent(h: typeof createElement, field: FormRest) {
   return h(
     Button,
     {
@@ -79,21 +88,21 @@ function generateResetComponent(h: any, field: any) {
       key: 'reset',
       onClick: () => {
         field.form.resetFields()
-        field.form.callBack()
+        field.callBack()
       }
     },
     field.text
   )
 }
 
-function generateSubmitComponent(h: any, field: any) {
+function generateSubmitComponent(h: typeof createElement, field: FormSubmit) {
   return h(
     Button,
     {
       ...field.props,
       key: 'submit',
       onClick: () => {
-        field
+        field.form
           .validateFields()
           .then(() => {
             field.success()
@@ -108,92 +117,98 @@ function generateSubmitComponent(h: any, field: any) {
 }
 
 // 增加title选择项 title不是lable
-function generateTextAreaComponent(h: any, field: any) {
+function generateTextAreaComponent(h: typeof createElement, field: FormFiedOptions) {
   // return h('div', null,h(div, field.title.props, field.title.text), h(Input.TextArea, field.props));
   if (field.title && Object.keys(field.title).length) {
     return [
       h('div', { ...field.title.props, key: field.title.text }, field.title.text),
-      generateFormItemComponent(h, { ...field.formItem, key: field.formItem.name }, h(Input.TextArea, field.props))
+      generateFormItemComponent(
+        h,
+        { ...field.formItem, key: field.formItem!.name as string },
+        h(Input.TextArea, field.props)
+      )
     ]
   }
   return h(Input.TextArea, field.props)
 }
 
-function generatetransferComponent(h: any, field: FormFiedOptions) {
+function generatetransferComponent(h: typeof createElement, field: FormFiedOptions) {
+  // @ts-ignore
   return h(Transfer, field.props)
 }
 
-function generateAutoCompleteComponent(h: any, field: any) {
+function generateAutoCompleteComponent(h: typeof createElement, field: FormFiedOptions) {
   return h(AutoComplete, field.props)
 }
-function generateRadioComponent(h: any, field: any) {
+function generateRadioComponent(h: typeof createElement, field: FormFiedOptions) {
   return h(Radio, field.props, field.children)
 }
-function generateRadioGroupComponent(h: any, field: any) {
+function generateRadioGroupComponent(h: typeof createElement, field: FormFiedOptions) {
   return h(Radio.Group, field.props)
 }
-function generateCheckboxComponent(h: any, field: any) {
+function generateCheckboxComponent(h: typeof createElement, field: FormFiedOptions) {
   return h(Checkbox, field.props, field.children)
 }
-function generateCheckboxGroupComponent(h: any, field: any) {
+function generateCheckboxGroupComponent(h: typeof createElement, field: FormFiedOptions) {
   return h(Checkbox.Group, field.props)
 }
 // <Switch defaultChecked onChange={onChange} />
-function generateSwitchComponent(h: any, field: any) {
+function generateSwitchComponent(h: typeof createElement, field: FormFiedOptions) {
   return h(Switch, field.props)
 }
-function generateSelectComponent(h: any, field: any) {
+function generateSelectComponent(h: typeof createElement, field: FormFiedOptions) {
   return h(Select, field.props)
 }
 
-function generateSliderComponent(h: any, field: any) {
+function generateSliderComponent(h: typeof createElement, field: FormFiedOptions) {
   // <Slider range marks={marks} defaultValue={[26, 37]} />
+  // @ts-ignore
   return h(Slider, field.props)
 }
-function generateDatePickerComponent(h: any, field: any) {
+function generateDatePickerComponent(h: typeof createElement, field: FormFiedOptions) {
   return h(DatePicker, field.props)
 }
-function generateRangePickerComponent(h: any, field: any) {
+function generateRangePickerComponent(h: typeof createElement, field: FormFiedOptions) {
   return h(DatePicker.RangePicker, field.props)
 }
-function generateTimePickerComponent(h: any, field: any) {
+function generateTimePickerComponent(h: typeof createElement, field: FormFiedOptions) {
   // <TimePicker onChange={onChange} defaultOpenValue={moment('00:00:00', 'HH:mm:ss')} />,
   return h(TimePicker, field.props)
 }
 
 // <InputNumber min={1} max={10} defaultValue={3} onChange={onChange} />
-function generateInputNumberComponent(h: any, field: any) {
+function generateInputNumberComponent(h: typeof createElement, field: FormFiedOptions) {
   return h(InputNumber, field.props)
 }
-function generateRateComponent(h: any, field: any) {
+function generateRateComponent(h: typeof createElement, field: FormFiedOptions) {
   return h(Rate, field.props)
 }
 // <Upload {...props}>
 //     <Button icon={<UploadOutlined />}>Click to Upload</Button>
 // </Upload>
-function generateUploadComponent(h: any, field: any) {
+function generateUploadComponent(h: typeof createElement, field: FormFiedOptions) {
   return h(Upload, field.props, field.children)
 }
 
-function generateTreeSelectComponent(h: any, field: any) {
+function generateTreeSelectComponent(h: typeof createElement, field: FormFiedOptions) {
   return h(TreeSelect, field.props)
 }
 
-function generateButtonComponent(h: any, field: any) {
+function generateButtonComponent(h: typeof createElement, field: FormFiedOptions) {
   return h(Button, field.props, field.text)
 }
 
-function generateInputComponent(h: any, field: any) {
+function generateInputComponent(h: typeof createElement, field: FormFiedOptions) {
   return h(Input, field.props)
 }
 
-function generateCascaderComponent(h: any, field: any) {
+function generateCascaderComponent(h: typeof createElement, field: FormFiedOptions) {
   return h(Cascader, field.props)
 }
 
 function generateFormItemComponent(
-  h: any,
-  formItem: any,
+  h: typeof createElement,
+  formItem: FormItemComponentProps,
   component?: null | React.ReactElement | React.ReactElement[]
 ) {
   return h(Form.Item, formItem, component)

@@ -1,32 +1,37 @@
-import React, { createElement, ReactNode } from 'react'
+import React, { createElement, ReactComponentElement, ReactNode } from 'react'
 import antdComponentCollects, { AntdComponentCollects } from './utils'
 import { FormProps, FormItemProps, FormInstance, ButtonProps, Form } from 'antd'
+
+export interface FormSubmit {
+  text: ReactNode
+  form: FormInstance
+  props: ButtonProps
+  success: () => void
+  fail: () => void
+}
+export interface FormRest {
+  text: ReactNode
+  form: FormInstance
+  props: ButtonProps
+  callBack: () => void
+}
 export interface ReactFormMakerOptions {
   form: FormProps
   fields: FormField[]
-  submit: {
-    text: ReactNode
-    form: FormInstance
-    props: ButtonProps
-    success: () => void
-    fail: () => void
-  }
-  reset: {
-    text: ReactNode
-    form: FormInstance
-    props: ButtonProps
-    callBack: () => void
-  }
+  submit: FormSubmit
+  reset: FormRest
 }
 
 export interface FormField {
   formItem: FormItemProps
   field: FormFiedOptions
 }
+
 export interface FormFiedOptions {
-  type: keyof AntdComponentCollects
+  type: keyof Omit<Omit<AntdComponentCollects, 'submit'>, 'reset'>
   props: any
   text?: ReactNode
+  formItem?: FormItemProps
   title?: {
     text: ReactNode
     props?: any
@@ -34,7 +39,11 @@ export interface FormFiedOptions {
   children?: ReactNode
 }
 
-function processSubmitOrReset(components: any, h: typeof createElement, props: ReactFormMakerOptions) {
+function processSubmitOrReset(
+  components: ReactComponentElement<any>[],
+  h: typeof createElement,
+  props: ReactFormMakerOptions
+) {
   const subComponent = []
   if (props.submit) {
     subComponent.push(antdComponentCollects['submit'](h, props.submit))
@@ -46,7 +55,7 @@ function processSubmitOrReset(components: any, h: typeof createElement, props: R
   const wrapperCol = { ...props.form.wrapperCol }
   if (props.form.wrapperCol) {
     wrapperCol['offset'] = wrapperCol['offset']
-      ? (wrapperCol['offset'] as number) + Number(props.form.labelCol!.span)
+      ? Number(wrapperCol['offset']) + Number(props.form.labelCol!.span)
       : props.form.labelCol!.span
   }
   let component = antdComponentCollects.formItem(h, { wrapperCol, key: 'bottom-actions' }, subComponent)
@@ -61,9 +70,13 @@ const ReactFormMaker = (props: ReactFormMakerOptions) => {
     console.log(props)
     const components = props.fields.map((item: FormField) => {
       let func = antdComponentCollects[item.field.type]
-      let subComponent = func ? func(h, { ...item.field }) : null
+      let subComponent = func ? func(h, item.field) : null
       // 包一层formItem标签
-      let component = antdComponentCollects.formItem(h, { ...item.formItem, key: item.formItem.label }, subComponent)
+      let component = antdComponentCollects.formItem(
+        h,
+        { ...item.formItem, key: item.formItem.name as string },
+        subComponent
+      )
       return component
     })
     processSubmitOrReset(components, h, props)

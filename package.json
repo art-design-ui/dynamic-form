@@ -11,7 +11,7 @@
   },
   "scripts": {
     "dev": "rollup -c rollup.config.js -w",
-    "build": "rollup -c rollup.config.js & npm run build:es & build:types",
+    "build": "rollup -c rollup.config.js & npm run build:es & npm run build:types",
     "build:es": "rollup -c rollup.config.js -f 'es' -o 'dist/es/index.esm.js'",
     "build:types": "tsc --noEmit false --declaration --emitDeclarationOnly --outfile dist/index.d.ts",
     "eslint:fix": "eslint  --color --fix ./src",
