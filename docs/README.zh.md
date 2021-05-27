@@ -1,7 +1,7 @@
 ---
-title: ReactFormMaker
+title: react-form-maker
 hero:
-  title: ReactFormMaker
+  title: react-form-maker
   desc: 🌇 基于antd高性能Form组件的动态表单方案。
   actions:
     - text: 开发指南
@@ -10,9 +10,9 @@ features:
   - title: 简单
     desc: 针对于表单的解决方案，无须任何配置，即可一键使用
   - title: 完备
-    desc: 配置齐全，支持热更新，TDK配置，路由按需加载
+    desc: 支持所有的数据表单，如Button、DatePicker等等
   - title: 快速
-    desc: 基于antd 的轻量级组件，使用JSON配置即可生成表单组件
+    desc: 基于antd的轻量级组件，使用JSON配置即可生成表单组件
 footer: 遵循 MIT 开源协议 | 版权所有 © 2020<br />由 [dumi](https://d.umijs.org) 提供支持
 ---
 

@@ -4,7 +4,7 @@ export default defineConfig({
   title: 'noov',
   outputPath: 'docs/dist',
   mode: 'site',
-  publicPath: 'https://github.com/art-design-ui/dynamic-form/',
+  publicPath: 'https://art-design-ui.github.io/noov.js/dynamic-form/',
   base: '/dynamic-form/',
   locales: [
     ['zh', '中文'],
