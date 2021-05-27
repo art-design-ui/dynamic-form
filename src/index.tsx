@@ -46,8 +46,8 @@ function processSubmitOrReset(components: any, h: typeof createElement, props: R
   const wrapperCol = { ...props.form.wrapperCol }
   if (props.form.wrapperCol) {
     wrapperCol['offset'] = wrapperCol['offset']
-      ? wrapperCol['offset'] + props.form.labelCol.span
-      : props.form.labelCol.span
+      ? (wrapperCol['offset'] as number) + Number(props.form.labelCol!.span)
+      : props.form.labelCol!.span
   }
   let component = antdComponentCollects.formItem(h, { wrapperCol, key: 'bottom-actions' }, subComponent)
   components.push(component)

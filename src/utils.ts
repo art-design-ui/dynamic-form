@@ -18,12 +18,31 @@ import {
   Radio,
   Form
 } from 'antd'
-import { FormFiedOptions, FormField, FormH } from 'src'
+import { FormFiedOptions, FormField } from 'src'
 export interface AntdComponentCollects {
   button: (h: any, obj: any) => React.ReactElement
   input: (h: any, obj: any) => React.ReactElement
-  formItem: (h: any, obj: any, component?: any) => React.ReactElement
-  cascader: (h: any, obj: any, component?: any) => React.ReactElement
+  formItem: (h: any, obj: any, component?: null | React.ReactElement | React.ReactElement[]) => React.ReactElement
+  cascader: (h: any, obj: any) => React.ReactElement
+  textarea: (h: any, obj: any) => React.ReactElement
+  radio: (h: any, obj: any) => React.ReactElement
+  radioGroup: (h: any, obj: any) => React.ReactElement
+  checkbox: (h: any, obj: any) => React.ReactElement
+  checkboxGroup: (h: any, obj: any) => React.ReactElement
+  switch: (h: any, obj: any) => React.ReactElement
+  select: (h: any, obj: any) => React.ReactElement
+  slider: (h: any, obj: any) => React.ReactElement
+  datePicker: (h: any, obj: any) => React.ReactElement
+  rangePicker: (h: any, obj: any) => React.ReactElement
+  timePicker: (h: any, obj: any) => React.ReactElement
+  inputNumber: (h: any, obj: any) => React.ReactElement
+  autoComplete: (h: any, obj: any) => React.ReactElement
+  rate: (h: any, obj: any) => React.ReactElement
+  upload: (h: any, obj: any) => React.ReactElement
+  treeSelect: (h: any, obj: any) => React.ReactElement
+  transfer: (h: any, obj: any) => React.ReactElement
+  reset: (h: any, obj: any) => React.ReactElement
+  submit: (h: any, obj: any) => React.ReactElement
 }
 
 const antdComponentCollects: AntdComponentCollects = {
@@ -52,7 +71,7 @@ const antdComponentCollects: AntdComponentCollects = {
   submit: generateSubmitComponent
 }
 
-function generateResetComponent(h: FormH, field: any) {
+function generateResetComponent(h: any, field: any) {
   return h(
     Button,
     {
@@ -172,7 +191,11 @@ function generateCascaderComponent(h: any, field: any) {
   return h(Cascader, field.props)
 }
 
-function generateFormItemComponent(h: any, formItem: any, component?: any) {
+function generateFormItemComponent(
+  h: any,
+  formItem: any,
+  component?: null | React.ReactElement | React.ReactElement[]
+) {
   return h(Form.Item, formItem, component)
 }
 
