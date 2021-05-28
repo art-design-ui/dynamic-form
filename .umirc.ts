@@ -1,7 +1,7 @@
 import { defineConfig } from 'dumi'
 
 export default defineConfig({
-  title: 'noov',
+  title: 'react-dynamic-form-maker',
   outputPath: 'docs/dist',
   mode: 'site',
   publicPath: 'https://art-design-ui.github.io/dynamic-form/',
