@@ -10,7 +10,7 @@ features:
   - title: 简单
     desc: 针对于表单的解决方案，无须任何配置，即可一键使用
   - title: 完备
-    desc: 支持所有的数据表单，如Button、DatePicker等等
+    desc: 支持所有的数据录入表单，如Button、DatePicker等等
   - title: 快速
     desc: 基于antd的轻量级组件，使用JSON配置即可生成表单组件
 footer: 遵循 MIT 开源协议 | 版权所有 © 2020<br />由 [dumi](https://d.umijs.org) 提供支持

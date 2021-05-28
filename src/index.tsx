@@ -67,7 +67,6 @@ const ReactFormMaker = (props: ReactFormMakerOptions) => {
     if (!props.fields) {
       return h('div')
     }
-    console.log(props)
     const components = props.fields.map((item: FormField) => {
       let func = antdComponentCollects[item.field.type]
       let subComponent = func ? func(h, item.field) : null
