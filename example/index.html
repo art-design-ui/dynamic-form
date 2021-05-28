@@ -165,6 +165,7 @@
             reason: '这就是原因',
             amount: 3000,
             platform: '',
+            switch:true
             // rate: 3.5,
           }
           ,
@@ -351,17 +352,11 @@
             formItem: {
               "name": "switch",
               "label": "switch组件",
-              "rules": [
-                {
-                  "required": false,
-                  "message": "该项为必填项"
-                }
-              ]
+              "valuePropName":"checked"
             },
             "field": {
               "type": "switch",
               "props": {
-                checked: false
               }
             },
           },

@@ -1,7 +1,7 @@
 ---
-title: react-form-maker
+title: react-dynamic-form-maker
 hero:
-  title: react-form-maker
+  title: react-dynamic-form-maker
   desc: 🌇 基于antd高性能Form组件的动态表单方案。
   actions:
     - text: 开发指南
@@ -19,15 +19,15 @@ footer: 遵循 MIT 开源协议 | 版权所有 © 2020<br />由 [dumi](https://d
 ## 📦 安装
 
 ```shell
-npm i react-form-maker
+npm i react-dynamic-form-maker
 ```
 
 ## 🔨 使用
 
 ```tsx
-import ReactFormMaker from 'react-form-maker'
+import ReactFormMaker from 'react-dynamic-form-maker'
 const config={...}
-<react-form-maker {...config}/>
+<ReactFormMaker {...config}/>
 ```
 
 参考：[快速上手](/zh/guide/getting-started)。

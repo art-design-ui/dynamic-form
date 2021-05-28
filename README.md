@@ -1,6 +1,6 @@
-# react-form-maker
+# react-dynamic-form-maker
 
-> 🌇react-form-maker 基于 antd 高性能 Form 组件的动态表单方案
+> 🌇react-dynamic-form-maker 基于 antd 高性能 Form 组件的动态表单方案
 
 ## 功能
 
@@ -12,15 +12,15 @@
 ## 📦 安装
 
 ```shell
-npm i react-form-maker
+npm i react-dynamic-form-maker
 ```
 
 ## 🔨 使用
 
 ```tsx
-import ReactFormMaker from 'react-form-maker'
+import ReactFormMaker from 'react-dynamic-form-maker'
 const config={...}
-<react-form-maker {...config}/>
+<ReactFormMaker {...config}/>
 ```
 
 ## config 接口

@@ -1,10 +1,10 @@
 {
-  "name": "react-form-maker",
+  "name": "react-dynamic-form-maker",
   "version": "1.0.0",
   "description": "dynamic-form for react",
   "main": "index.min.js",
   "module": "es/index.esm.js",
-  "typings": "types/index.d.ts",
+  "typings": "index.d.ts",
   "directories": {
     "example": "example",
     "test": "test"
@@ -44,6 +44,7 @@
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.7",
     "@types/react": "^17.0.6",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",

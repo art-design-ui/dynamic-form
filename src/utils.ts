@@ -51,7 +51,7 @@ export interface AntdComponentCollects {
 }
 
 export interface FormItemComponentProps extends FormItemProps {
-  key?: string
+  key?: string | number | null | undefined
 }
 
 const antdComponentCollects: AntdComponentCollects = {
@@ -124,7 +124,7 @@ function generateTextAreaComponent(h: typeof createElement, field: FormFiedOptio
       h('div', { ...field.title.props, key: field.title.text }, field.title.text),
       generateFormItemComponent(
         h,
-        { ...field.formItem, key: field.formItem!.name as string },
+        { ...field.formItem, key: field.formItem && (field.formItem.key || (field.formItem.name as string)) },
         h(Input.TextArea, field.props)
       )
     ]
