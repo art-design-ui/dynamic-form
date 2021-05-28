@@ -1,5 +1,5 @@
 import React from 'react'
-import { render ,screen} from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import ReactFormMaker from '../../src/index'
 const config = {
   form: {
@@ -15,17 +15,17 @@ const config = {
       field: {
         type: 'switch',
         props: {
-          checked:true,
-          checkedChildren:'开启'
-        },
+          checked: true,
+          checkedChildren: '开启'
+        }
       }
     }
   ]
 }
-describe('test Button component', () => {
-  it('should render the correct default Button', async () => {
+describe('test Switch component', () => {
+  it('should render the correct default Switch', async () => {
     const wrapper = render(<ReactFormMaker {...config} />)
-    const spanEl= await screen.findByText('开启')
+    const spanEl = await screen.findByText('开启')
     expect(spanEl).toHaveClass('ant-switch-inner')
   })
 })

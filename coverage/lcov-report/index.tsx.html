@@ -144,11 +144,7 @@
 <a name='L85'></a><a href='#L85'>85</a>
 <a name='L86'></a><a href='#L86'>86</a>
 <a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L88'></a><a href='#L88'>88</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -198,44 +194,40 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -263,8 +255,8 @@ export interface ReactFormMakerOptions {
   reset: FormRest
 }
 &nbsp;
-interface FormItem extends FormItemProps{
-  key?:string|number|undefined|null
+interface FormItem extends FormItemProps {
+  key?: string | number | undefined | null
 }
 &nbsp;
 export interface FormField {
@@ -300,8 +292,8 @@ function processSubmitOrReset(
   const wrapperCol = { ...props.form.wrapperCol }
   <span class="missing-if-branch" title="else path not taken" >E</span>if (props.form.wrapperCol) {
     wrapperCol['offset'] = wrapperCol['offset']
-      ? <span class="branch-0 cbranch-no" title="branch not covered" >Number(wrapperCol['offset']) + Number(props.form.labelCol&amp;&amp;props.form.labelCol.span)</span>
-      : props.form.labelCol&amp;&amp;props.form.labelCol.span
+      ? <span class="branch-0 cbranch-no" title="branch not covered" >Number(wrapperCol['offset']) + Number(props.form.labelCol &amp;&amp; props.form.labelCol.span)</span>
+      : props.form.labelCol &amp;&amp; props.form.labelCol.span
   }
   let component = antdComponentCollects.formItem(h, { wrapperCol, key: 'bottom-actions' }, subComponent)
   components.push(component)
@@ -312,15 +304,11 @@ const ReactFormMaker = (props: ReactFormMakerOptions) =&gt; {
     <span class="missing-if-branch" title="if path not taken" >I</span>if (!props.fields) {
 <span class="cstat-no" title="statement not covered" >      return h('div')</span>
     }
-    const components = props.fields.map((item: FormField,index:number) =&gt; {
+    const components = props.fields.map((item: FormField, index: number) =&gt; {
       let func = antdComponentCollects[item.field.type]
       let subComponent = func ? func(h, item.field) : <span class="branch-1 cbranch-no" title="branch not covered" >null</span>
       // 包一层formItem标签
-      let component = antdComponentCollects.formItem(
-        h,
-        { key: index,...item.formItem },
-        subComponent
-      )
+      let component = antdComponentCollects.formItem(h, { key: index, ...item.formItem }, subComponent)
       return component
     })
     processSubmitOrReset(components, h, props)
@@ -337,7 +325,7 @@ export default ReactFormMaker
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri May 28 2021 18:10:24 GMT+0800 (中国标准时间)
+                at Sat May 29 2021 00:26:08 GMT+0800 (中国标准时间)
             </div>
         </div>
         <script src="prettify.js"></script>

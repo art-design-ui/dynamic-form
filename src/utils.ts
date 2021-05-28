@@ -147,7 +147,7 @@ function generateRadioGroupComponent(h: typeof createElement, field: FormFiedOpt
   return h(Radio.Group, field.props)
 }
 function generateCheckboxComponent(h: typeof createElement, field: FormFiedOptions) {
-  return h(Checkbox, field.props, field.children)
+  return h(Checkbox, field.props, field.text)
 }
 function generateCheckboxGroupComponent(h: typeof createElement, field: FormFiedOptions) {
   return h(Checkbox.Group, field.props)
