@@ -1,6 +1,20 @@
 import React, { createElement, ReactComponentElement, ReactNode } from 'react'
 import antdComponentCollects, { AntdComponentCollects } from './utils'
-import { FormProps, FormItemProps, FormInstance, ButtonProps, Form } from 'antd'
+import {
+  FormProps,
+  FormItemProps,
+  FormInstance,
+  ButtonProps,
+  Form,
+  SwitchProps,
+  SelectProps,
+  InputProps,
+  InputNumberProps,
+  DatePickerProps
+} from 'antd'
+import { RangePickerProps } from 'antd/lib/date-picker'
+import { RangePickerTimeProps } from 'antd/lib/date-picker/generatePicker'
+import { SliderBaseProps } from 'antd/lib/slider'
 
 export interface FormSubmit {
   text: ReactNode

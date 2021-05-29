@@ -165,7 +165,7 @@
             reason: '这就是原因',
             amount: 3000,
             platform: '',
-            switch:true
+            switch: true
             // rate: 3.5,
           }
           ,
@@ -269,7 +269,7 @@
               "props": {
                 checked: false
               },
-              children: ['苹果'] // 定义子节点 可以在这里写JSX
+              text: '苹果' // 定义子节点 可以在这里写JSX
             },
           },
           {
@@ -307,7 +307,7 @@
               "type": "radio",
               "props": {
               },
-              children: ['banana']
+              text: 'banana'
             },
           },
           // radioGroupOptions
@@ -352,7 +352,7 @@
             formItem: {
               "name": "switch",
               "label": "switch组件",
-              "valuePropName":"checked"
+              "valuePropName": "checked"
             },
             "field": {
               "type": "switch",
@@ -544,7 +544,7 @@
               "props": {
                 fileList
               },
-              children: <Button>Click to Upload</Button>
+              text: <Button>Click to Upload</Button>
             },
           }
         ],
@@ -567,7 +567,7 @@
           form,
           props: {
             type: 'primary',
-            style:{marginLeft:20}
+            style: {marginLeft: 20}
           },
           callBack() {
             // 关闭弹框等操作

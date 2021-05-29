@@ -23,6 +23,7 @@ import { FormFiedOptions, FormRest, FormSubmit } from 'src'
 export interface AntdComponentCollects {
   button: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
   input: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
+  search: (h: typeof createElement, field: FormFiedOptions) => React.ReactElement
   formItem: (
     h: typeof createElement,
     field: FormItemComponentProps,
@@ -57,6 +58,7 @@ export interface FormItemComponentProps extends FormItemProps {
 const antdComponentCollects: AntdComponentCollects = {
   button: generateButtonComponent,
   input: generateInputComponent,
+  search: generateSearchComponent,
   textarea: generateTextAreaComponent,
   radio: generateRadioComponent,
   radioGroup: generateRadioGroupComponent,
@@ -141,7 +143,7 @@ function generateAutoCompleteComponent(h: typeof createElement, field: FormFiedO
   return h(AutoComplete, field.props)
 }
 function generateRadioComponent(h: typeof createElement, field: FormFiedOptions) {
-  return h(Radio, field.props, field.children)
+  return h(Radio, field.props, field.text)
 }
 function generateRadioGroupComponent(h: typeof createElement, field: FormFiedOptions) {
   return h(Radio.Group, field.props)
@@ -187,7 +189,7 @@ function generateRateComponent(h: typeof createElement, field: FormFiedOptions) 
 //     <Button icon={<UploadOutlined />}>Click to Upload</Button>
 // </Upload>
 function generateUploadComponent(h: typeof createElement, field: FormFiedOptions) {
-  return h(Upload, field.props, field.children)
+  return h(Upload, field.props, field.text)
 }
 
 function generateTreeSelectComponent(h: typeof createElement, field: FormFiedOptions) {
@@ -202,6 +204,9 @@ function generateInputComponent(h: typeof createElement, field: FormFiedOptions)
   return h(Input, field.props)
 }
 
+function generateSearchComponent(h: typeof createElement, field: FormFiedOptions) {
+  return h(Input.Search, field.props)
+}
 function generateCascaderComponent(h: typeof createElement, field: FormFiedOptions) {
   return h(Cascader, field.props)
 }
