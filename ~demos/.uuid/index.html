@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://art-design-ui.github.io/dynamic-form/umi.css"
+    />
+    <script>
+      window.routerBase = "/dynamic-form/";
+    </script>
+    <script>
+      //! umi version: 3.4.22
+    </script>
+    <script>
+      !(function () {
+        var e = localStorage.getItem("dumi:prefers-color"),
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches,
+          r = ["light", "dark", "auto"];
+        document.documentElement.setAttribute(
+          "data-prefers-color",
+          e === r[2] ? (t ? r[1] : r[0]) : r.includes(e) ? e : r[0]
+        );
+      })();
+    </script>
+    <title>react-dynamic-form-maker</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="https://art-design-ui.github.io/dynamic-form/umi.js"></script>
+  </body>
+</html>
