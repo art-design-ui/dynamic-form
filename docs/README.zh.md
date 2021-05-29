@@ -5,7 +5,7 @@ hero:
   desc: 🌇 基于antd高性能Form组件的动态表单方案。
   actions:
     - text: 开发指南
-      link: /guide
+      link: https://ant.design/components/form-cn/
 features:
   - title: 简单
     desc: 针对于表单的解决方案，无须任何配置，即可一键使用
