@@ -15,7 +15,7 @@ jest.config.json
 rollup.config.js
 package-lock.json
 .gitignore
-.eslintrc
+.eslintrc.js
 .eslintignore
 docs/
 .commitlintrc.js
