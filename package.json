@@ -1,6 +1,6 @@
 {
   "name": "react-dynamic-form-maker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "dynamic-form for react",
   "main": "index.min.js",
   "module": "es/index.esm.js",
@@ -26,10 +26,21 @@
     "react",
     "form"
   ],
+  "homepage": "https://art-design-ui.github.io/dynamic-form/",
+  "bugs": {
+    "url": "https://github.com/art-design-ui/dynamic-form/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/art-design-ui/dynamic-form"
+  },
   "author": "vnues",
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.13.17"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",

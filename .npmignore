@@ -6,9 +6,8 @@ coverage
 .circleci
 node_modules/
 .umirc.ts
-.commitlintrc
 .prettierignore
-.prettierrc
+.prettierrc.js
 .npmrc/
 tsconfig.json
 jest.config.json
@@ -16,7 +15,8 @@ jest.config.json
 rollup.config.js
 package-lock.json
 .gitignore
-.eslint.js
+.eslintrc
 .eslintignore
-.editconfig
 docs/
+.commitlintrc.js
+.editorconfig
